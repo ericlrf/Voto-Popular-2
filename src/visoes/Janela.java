@@ -4,12 +4,16 @@
  */
 package visoes;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Formatter;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelos.*;
@@ -68,6 +72,7 @@ public class Janela extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         titulo1 = new javax.swing.JLabel();
         logo1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         titulo2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -99,14 +104,25 @@ public class Janela extends javax.swing.JFrame {
         trabalho = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
         instituicao = new javax.swing.JTextArea();
+        jPanel6 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jList4 = new javax.swing.JList();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Voto Popular 2.0");
-        setAlwaysOnTop(true);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);
-        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(20, 113, 56));
@@ -123,7 +139,7 @@ public class Janela extends javax.swing.JFrame {
         titulo1.setBackground(new java.awt.Color(255, 255, 255));
         titulo1.setFont(new java.awt.Font("Comic Sans MS", 1, 50)); // NOI18N
         titulo1.setForeground(new java.awt.Color(44, 66, 79));
-        titulo1.setText("<html><center>Para iniciar a votação</center><center>toque em qualquer lugar da tela</center></html>");
+        titulo1.setText("<html><center>Para iniciar a votação</center><center>clique em qualquer lugar da tela</center></html>");
         titulo1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 titulo1MouseClicked(evt);
@@ -138,6 +154,15 @@ public class Janela extends javax.swing.JFrame {
             }
         });
         jPanel1.add(logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jLabel2.setOpaque(true);
+        jLabel2.setPreferredSize(new java.awt.Dimension(20, 20));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -412,6 +437,78 @@ public class Janela extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jPanel6.setBackground(new java.awt.Color(20, 113, 56));
+        jPanel6.setMaximumSize(new java.awt.Dimension(800, 600));
+        jPanel6.setMinimumSize(new java.awt.Dimension(800, 600));
+        jPanel6.setPreferredSize(new java.awt.Dimension(800, 600));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(95, 152, 58));
+        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(44, 66, 79));
+        jButton1.setText("Voltar");
+        jButton1.setPreferredSize(new java.awt.Dimension(200, 140));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, -1));
+
+        jButton2.setBackground(new java.awt.Color(95, 152, 58));
+        jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(44, 66, 79));
+        jButton2.setText("Atualizar");
+        jButton2.setPreferredSize(new java.awt.Dimension(200, 140));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 530, 320, 50));
+
+        jButton3.setBackground(new java.awt.Color(95, 152, 58));
+        jButton3.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(44, 66, 79));
+        jButton3.setText("Continuar");
+        jButton3.setPreferredSize(new java.awt.Dimension(200, 140));
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        jPanel6.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(44, 66, 79));
+        jLabel1.setText("Resultado da Votação");
+        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
+
+        jScrollPane6.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane6.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane6.setPreferredSize(new java.awt.Dimension(800, 300));
+
+        jList4.setBackground(new java.awt.Color(251, 197, 37));
+        jList4.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jList4.setSelectionBackground(new java.awt.Color(95, 152, 58));
+        jScrollPane6.setViewportView(jList4);
+
+        jPanel6.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
+        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 500, 90, -1));
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 470, 90, -1));
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 440, 90, -1));
+
+        jLabel6.setText("Votos 29/10/2014   -");
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 440, 220, -1));
+
+        jLabel7.setText("Votos 30/10/2014   -");
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 470, 220, -1));
+
+        jLabel8.setText("Votos 31/10/2014   -");
+        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 220, -1));
+
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -548,6 +645,71 @@ public class Janela extends javax.swing.JFrame {
         
     }//GEN-LAST:event_entrarTela1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setContentPane(jPanel1);
+        this.pack();        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String linha = "";
+        int dia1 = 232;
+        int dia2 = 384;
+        int counter = 0;
+        List<Voto> lista = new ArrayList<Voto>();
+        for (Trabalhos t : Trabalhos.values()) {
+            lista.add(new Voto(t, 0));
+        }
+        try {
+            FileReader reader = new FileReader("votos.txt");
+            BufferedReader leitor = new BufferedReader(reader);
+            while (true) {
+                linha = leitor.readLine();
+                if (linha == null) {
+                    break;
+                } else {
+                    for (Trabalhos t : Trabalhos.values()) {
+                        if (linha.equalsIgnoreCase(t.name())) {
+                                int temp = lista.get(t.ordinal()).getQuantidade();
+                                lista.set(t.ordinal(), new Voto(t, temp += 1));
+                                counter += 1;                            
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+        }
+        Collections.sort(lista);
+        jList4.setListData(lista.toArray());
+        jLabel3.setText(counter-(dia1+dia2)+"");
+        jLabel4.setText(dia2+"");
+        jLabel5.setText(dia1+"");
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:        
+        this.setContentPane(jPanel6);
+        this.pack();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+//        String temp = "";
+        if (jList4.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Você precisa marcar algum item para continuar.","Aviso!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            
+//            for(Trabalhos t : Trabalhos.values()){
+//                if (jList4.getSelectedValue().toString().equalsIgnoreCase(t.getCategoria().getValor().toString())) {
+//                    temp = t.getCategoria().getValor().toString();
+//                }
+//            }
+                    JOptionPane.showMessageDialog(null,"Volte o menu e procure o trabalho nas listas." , "Informações:", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -591,19 +753,33 @@ public class Janela extends javax.swing.JFrame {
     private javax.swing.JLabel estado;
     private javax.swing.JPanel info;
     private javax.swing.JTextArea instituicao;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
+    private javax.swing.JList jList4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel logo1;
     private javax.swing.JLabel modalidade;
     private javax.swing.JLabel opcao;
